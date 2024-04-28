@@ -24,6 +24,10 @@ interface QuillEditorProps{
   dirType: 'workspace' | 'folder' | 'file';
 }
 
+interface RefObject<T> {
+  readonly current: T | null
+}
+
 var TOOLBAR_OPTIONS = [
   ['bold', 'italic', 'underline', 'strike'], // toggled buttons
   ['blockquote', 'code-block'],
@@ -136,7 +140,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
   }, [state, pathname, workspaceId])
   //
 
-  const wrapperRef = useCallback(async (wrapper: any) => {
+  const initializeQuill  = useCallback(async (wrapper: HTMLDivElement) => {
     if (typeof window !== 'undefined') {
       if (wrapper === null) return;
       wrapper.innerHTML = '';
@@ -525,7 +529,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
                         </AvatarFallback>
                       </Avatar>
                     </TooltipTrigger>
-                    <TooltipContent>User Name</TooltipContent>
+                    <TooltipContent>{collaborator.email}</TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               ))}
@@ -605,7 +609,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
         <div 
           id='container' 
           className='max-w-[800]'
-          ref={wrapperRef}
+          ref={initializeQuill as unknown as RefObject<HTMLDivElement>}
         >
         </div>
       </div>
@@ -614,3 +618,4 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
 }
 
 export default QuillEditor
+
