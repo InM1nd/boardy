@@ -24,6 +24,7 @@ const LogoutButton: React.FC<LogoutButtonProps>= ({children}) => {
       type: "SET_WORKSPACES",
       payload: {workspaces: []} ,
     })
+    console.log("Logout")
   }
 
   return (
@@ -31,7 +32,7 @@ const LogoutButton: React.FC<LogoutButtonProps>= ({children}) => {
       variant="ghost"
       size="icon"
       className='p-0'
-      onChange={logout}
+      onClick={logout}
     >
       {children}
     </Button>

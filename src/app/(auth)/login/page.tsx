@@ -48,8 +48,8 @@ const LoginPage = () => {
         onSubmit={form.handleSubmit(onSubmit)} 
         className='w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col'>
           <Link href="/" className='w-full flex justify-left items-center'>
-            <Image src={Logo} alt="Cypress Logo" width={50} height={50}/>
-            <span className='font-semibold dark:text-white text-4xl ml-2'>cypress.</span>
+            <Image src={Logo} alt="Boardy Logo" width={50} height={50}/>
+            <span className='font-semibold dark:text-white text-4xl ml-2'>boardy.</span>
           </Link>
           <FormDescription className='text-foreground/60'>
             An all-In-One Collaboration and Productivity Platform

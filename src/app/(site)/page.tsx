@@ -40,7 +40,7 @@ const HomePage = () => {
             bg-background
           "
           >
-            Get Cypress Free
+            Get Boardy Free
           </Button>
         </section>
         <section className='md:mt-[-90px] sm:w-full w-[750px] flex justify-center items-center mt-[-40px] relative sm:ml-0 ml-[-50px]'>
@@ -70,7 +70,7 @@ const HomePage = () => {
             subheading="Capture your ideas, thoughts, and meeting notes in a structured and organized manner."
             pill="Features"
           />
-          <div className=' mt-10 max-w-[450px] flex justify-center items-center relative sm:ml-20 rounded-2xl border-8 border-washed-purple-300 border-opacity-10'>
+          <div className=' mt-10 max-w-[450px] flex justify-center items-center relative sm:ml-20 rounded-3xl border-8 border-washed-purple-300 border-opacity-10'>
           <Image src={Cal} alt='Banner' className='rounded-2xl'/>
           </div>
       </section>
@@ -104,7 +104,7 @@ const HomePage = () => {
                             {testimonial.name}
                           </CardTitle>
                           <CardDescription className='dark:text-washed-purple-800'>
-                            {testimonial.name.toLocaleLowerCase()}
+                            {testimonial.job.toLocaleLowerCase()}
                           </CardDescription>
                         </div>
                       </div>

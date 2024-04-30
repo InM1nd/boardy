@@ -103,7 +103,7 @@ const Signup = () => {
         >
           <Image
             src={Logo}
-            alt="cypress Logo"
+            alt="boardy Logo"
             width={50}
             height={50}
           />
@@ -111,7 +111,7 @@ const Signup = () => {
             className="font-semibold
           dark:text-white text-4xl first-letter:ml-2"
           >
-            cypress.
+            boardy.
           </span>
         </Link>
         <FormDescription

@@ -17,6 +17,7 @@ import { z } from 'zod';
 import { createWorkspace } from '@/lib/supabase/queries';
 import { Button } from '../ui/button';
 import Loader from '../global/Loader';
+import { useRouter } from 'next/navigation';
 
 
 interface DashboardSetupProps{
@@ -30,6 +31,7 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({
 }) => {
 
   const { toast } = useToast();
+  const router = useRouter();
   const [selectedEmoji, setSelectedEmoji] = useState('➕');
   const {
     register, 
@@ -43,7 +45,6 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({
       workspaceName:'',
     },
 });
-
 const supabase = createClientComponentClient();
   //get dispatch function
 const { dispatch } = useAppState();
@@ -69,7 +70,7 @@ const onSubmit: SubmitHandler<z.infer<typeof CreateWorkspaceFormSchema>> = async
             //overwrite if exists
             upsert: true,
           });
-        if (error) throw new Error();
+        if (error) throw new Error('');
         //set new file path
         filePath = data.path;
       } catch (error) {
@@ -110,7 +111,16 @@ const onSubmit: SubmitHandler<z.infer<typeof CreateWorkspaceFormSchema>> = async
         title: 'Workspace Created',
         description: `${newWorkspace.title} has been created successfully.`,
       });
+      router.replace(`/dashboard/${newWorkspace.id}`);
       //reset the form
+    }  catch (error) {
+      console.log(error, 'Error');
+      toast({
+        variant: 'destructive',
+        title: 'Could not create your workspace',
+        description:
+          "Oops! Something went wrong, and we couldn't create your workspace. Try again or come back later.",
+      });
     } finally {
       reset();
     }
